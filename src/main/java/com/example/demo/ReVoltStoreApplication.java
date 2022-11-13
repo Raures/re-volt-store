@@ -9,5 +9,4 @@ public class ReVoltStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ReVoltStoreApplication.class, args);
 	}
-
 }
