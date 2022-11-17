@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 @Controller
 public class CarController {
@@ -21,16 +24,10 @@ public class CarController {
 
         return ResponseEntity.ok(this.carRepository.findAll());
     }
-    // TODO: Fix ambiguous request
-//    @GetMapping("/cars/{id}")
-//    public ResponseEntity getById(@PathVariable(value = "id") Long id) {
-//
-//        return ResponseEntity.ok(this.carRepository.findById(id));
-//    }
+    // TODO: Fix ambiguous request for {id} and {name}
+    @GetMapping("/cars/{id}")
+    public ResponseEntity getById(@PathVariable(value = "id") Long id) {
 
-    @GetMapping("/cars/{name}")
-    public ResponseEntity getByName(@PathVariable(value = "name") String name) {
-
-        return ResponseEntity.ok(this.carRepository.findByName(name));
+        return ResponseEntity.ok(this.carRepository.findById(id));
     }
 }
