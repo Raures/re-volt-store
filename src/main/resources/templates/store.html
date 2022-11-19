@@ -24,9 +24,9 @@
     <tr th:each="car : ${cars}">
         <td th:text="${car.id}" style="color: red; font-weight: bold"></td>
         <td th:text="${car.name}" style="font-style: italic"></td>
-        <td th:text="${car.thumbnail_id}"></td>
-        <td th:text="${car.engine_id}"></td> <!-- TODO: Make it show the engine type, not the id -->
-        <td th:text="${car.rating_id}"></td>
+        <td><img th:src="@{'cars/' + ${car.thumbnail.image}}"/></td>
+        <td th:text="${car.engine.type}"></td>
+        <td th:text="${car.rating.type}"></td>
         <td th:text="${car.speed}"></td>
         <td th:text="${car.acc}"></td>
         <td th:text="${car.mass}"></td>
