@@ -24,18 +24,18 @@ public class StoreController {
 
         model.addAttribute("cars", carRepository.findAll());
 
-        List<Car> cs = new ArrayList<>(carRepository.findAll());
-
-        for(Car c: cs) {
-            System.out.println(c.getId() + ". "
-                    + c.getName() + " "
-                    + c.getThumbnail().getImage() + " "
-                    + c.getEngine().getType() + " "
-                    + c.getRating().getType() + " spd: "
-                    + c.getSpeed() + " acc: "
-                    + c.getAcc() + " mass: "
-                    + c.getMass() + ";");
-        }
+//        List<Car> cs = new ArrayList<>(carRepository.findAll());
+//
+//        for(Car c: cs) {
+//            System.out.println(c.getId() + ". "
+//                    + c.getName() + " "
+//                    + c.getThumbnail().getImage() + " "
+//                    + c.getEngine().getType() + " "
+//                    + c.getRating().getType() + " spd: "
+//                    + c.getSpeed() + " acc: "
+//                    + c.getAcc() + " mass: "
+//                    + c.getMass() + ";");
+//        }
 
         return "store";
     }
