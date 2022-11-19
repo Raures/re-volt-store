@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "engines")
+@Entity
+@Table(name = "engines")
 public class Engine {
 
     @Id

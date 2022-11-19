@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "ratings")
+@Entity
+@Table(name = "ratings")
 public class Rating {
 
     @Id

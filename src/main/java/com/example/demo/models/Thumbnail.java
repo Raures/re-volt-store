@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "thumbnails")
+@Entity
+@Table(name = "thumbnails")
 public class Thumbnail {
 
     @Id
