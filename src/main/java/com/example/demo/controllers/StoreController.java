@@ -7,27 +7,35 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.ServletContext;
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class StoreController {
-
-//    private ServletContext servletContext;
     private final CarRepository carRepository;
-    private final EngineRepository engineRepository;
 
-    public StoreController(CarRepository carRepository, EngineRepository engineRepository) {
+    public StoreController(CarRepository carRepository) {
         this.carRepository = carRepository;
-        this.engineRepository = engineRepository;
     }
 
     @GetMapping("/allCars")
     public String getAllCars(Model model) {
 
         model.addAttribute("cars", carRepository.findAll());
-//        model.addAttribute("engines", engineRepository.findAll());
+
+        List<Car> cs = new ArrayList<>(carRepository.findAll());
+
+        for(Car c: cs) {
+            System.out.println(c.getId() + ". "
+                    + c.getName() + " "
+                    + c.getThumbnail().getImage() + " "
+                    + c.getEngine().getType() + " "
+                    + c.getRating().getType() + " spd: "
+                    + c.getSpeed() + " acc: "
+                    + c.getAcc() + " mass: "
+                    + c.getMass() + ";");
+        }
 
         return "store";
     }
