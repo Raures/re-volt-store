@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Store</title>
+    <title>Re-Volt Store</title>
 
-<!--    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>-->
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
 
-<!--    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>-->
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
 
     <style>
         td, th {text-align: center;}
@@ -23,7 +23,7 @@
             <th>Engine</th>
             <th>Rating</th>
             <th>Speed (mph)</th>
-            <th>Acceleration</th>
+            <th>Acceleration (m/s&#178)</th>
             <th>Mass (kg)</th>
         </tr>
         <tr th:each="car : ${cars}">
