@@ -10,12 +10,35 @@
     <style>
             body {
                 background-color: #eeeee4;
+                background-image: url('/images/bkg.jpg');
+                background-repeat: no-repeat;
+                background-size: 100%;
+                background-attachment: fixed;
             }
             header {
-                 background-color: white;
+                background-color: white;
             }
             .navbar {
                 background-color: white;
+                padding: 15px;
+            }
+            .navbar .navbar-list {
+                text-align: center;
+                vertical-align: middle;
+                margin: auto;
+            }
+            .navbar .navbar-list .navbar-list-item {
+                margin-left: 3em;
+                margin-right: 3em;
+                font-size: 25px;
+                text-decoration: none;
+                color: black;
+                padding: 10px;
+            }
+            .navbar .navbar-list .navbar-list-item:hover {
+                color: white;
+                background-color: black;
+                padding: 10px;
             }
             .container {
                 margin-top: 20px;
@@ -45,7 +68,7 @@
                 margin-bottom: 0.8em;
             }
             .card:hover {
-                box-shadow: 0px 0px 20px #000000;
+                box-shadow: 0px 0px 20px #ADD8E6;
                 -moz-transition: all 0.2s ease-in;
                 -o-transition: all 0.2s ease-in;
                 -webkit-transition: all 0.2s ease-in;
@@ -90,7 +113,12 @@
 <body>
 <header>
     <nav class="navbar">
-        <p>Navbar</p>
+        <div class="navbar-list">
+            <a class="navbar-list-item" href="#">Home</a>
+            <a class="navbar-list-item" href="#">Cars</a>
+            <a class="navbar-list-item" href="#">Tracks</a>
+            <a class="navbar-list-item" href="#">Accessories</a>
+        </div>
     </nav>
 </header>
 
@@ -102,7 +130,7 @@
                 <p class="groupbox-title">Engine type</p>
                 <div class="form-check" th:each="engine : ${engines}">
                     <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${engine.type}">
-                    <label class="form-check-label" th:text="${engine.type}" th:for="'checkbox-' + ${engine.type}">
+                    <label class="form-check-label" th:text="${engine.type} + ' (' + (${enginesCounter.get(engine.type)}?: '0')  + ')'" th:for="'checkbox-' + ${engine.type}">
                     </label>
                 </div>
             </div>
@@ -110,7 +138,7 @@
                 <p class="groupbox-title">Rating</p>
                 <div class="form-check" th:each="rating : ${ratings}">
                     <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${rating.type}">
-                    <label class="form-check-label" th:text="${rating.type}" th:for="'checkbox-' + ${rating.type}">
+                    <label class="form-check-label" th:text="${rating.type} + ' (' + (${ratingsCounter.get(rating.type)}?: '0') + ')'" th:for="'checkbox-' + ${rating.type}">
                     </label>
                 </div>
             </div>
