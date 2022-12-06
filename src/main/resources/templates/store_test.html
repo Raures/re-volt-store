@@ -9,14 +9,13 @@
 
     <style>
             body {
-                background-color: #eeeee4;
                 background-image: url('/images/bkg.jpg');
                 background-repeat: no-repeat;
                 background-size: 100%;
                 background-attachment: fixed;
             }
             header {
-                background-color: white;
+                 background-color: white;
             }
             .navbar {
                 background-color: white;
@@ -114,10 +113,13 @@
 <header>
     <nav class="navbar">
         <div class="navbar-list">
+<!--            TODO: Group Cars, Tracks and Accessories under href called Store -->
             <a class="navbar-list-item" href="#">Home</a>
             <a class="navbar-list-item" href="#">Cars</a>
             <a class="navbar-list-item" href="#">Tracks</a>
             <a class="navbar-list-item" href="#">Accessories</a>
+            <a class="navbar-list-item" href="#">About Us</a>
+            <a class="navbar-list-item" href="#">Contact</a>
         </div>
     </nav>
 </header>
@@ -130,7 +132,7 @@
                 <p class="groupbox-title">Engine type</p>
                 <div class="form-check" th:each="engine : ${engines}">
                     <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${engine.type}">
-                    <label class="form-check-label" th:text="${engine.type} + ' (' + (${enginesCounter.get(engine.type)}?: '0')  + ')'" th:for="'checkbox-' + ${engine.type}">
+                    <label class="form-check-label" th:text="|${engine.type} (${enginesCounter.get(engine.type) ?: '0'})|" th:for="'checkbox-' + ${engine.type}">
                     </label>
                 </div>
             </div>
@@ -138,7 +140,7 @@
                 <p class="groupbox-title">Rating</p>
                 <div class="form-check" th:each="rating : ${ratings}">
                     <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${rating.type}">
-                    <label class="form-check-label" th:text="${rating.type} + ' (' + (${ratingsCounter.get(rating.type)}?: '0') + ')'" th:for="'checkbox-' + ${rating.type}">
+                    <label class="form-check-label" th:text="|${rating.type} (${ratingsCounter.get(rating.type) ?: '0'})|" th:for="'checkbox-' + ${rating.type}">
                     </label>
                 </div>
             </div>
@@ -170,6 +172,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="values">
+<!--                                        TODO: Add emoji: Electric (thunderbolt), Glow (petrol/oil drop), Special (UFO?) -->
                                         <p th:text="${car.engine.type}"></p>
                                         <p th:text="${car.rating.type}">Amateur</p>
                                         <p th:text="${car.speed}">43</p>

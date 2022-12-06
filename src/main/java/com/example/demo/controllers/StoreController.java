@@ -7,8 +7,10 @@ import com.example.demo.services.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/store")
 public class StoreController {
     private final CarRepository carRepository;
     private final EngineRepository engineRepository;
@@ -25,9 +27,8 @@ public class StoreController {
         this.storeService = storeService;
     }
 
-    @GetMapping("/allCars")
+    @GetMapping("/cars")
     public String getAllCars(Model model) {
-
         model.addAttribute("cars", storeService.getCars());
         model.addAttribute("engines", engineRepository.findAll());
         model.addAttribute("ratings", ratingRepository.findAll());
