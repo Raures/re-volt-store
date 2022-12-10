@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Re-Volt Store</title>
+
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
+	<script src="range.js"></script>
+        <link href="css.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="navbar-list">
+                    <a class="navbar-list-item" href="#">Cars</a>
+                    <a class="navbar-list-item" href="#">Tracks</a>
+                    <a class="navbar-list-item" href="#">Accessories</a>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row">
+<!--                Filters box -->
+                <div class="col-sm-3">
+                    <div class="groupbox">
+                        <p class="groupbox-title">Difficulty</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkbox-Easy">
+                            <label class="form-check-label" for="checkbox-Easy">
+                                Easy
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkbox-Medium">
+                            <label class="form-check-label" for="checkbox-Medium">
+                                Medium
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkbox-Hard">
+                            <label class="form-check-label" for="checkbox-Hard">
+                                Hard
+                            </label>
+                        </div>
+			<div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkbox-Extreme">
+                            <label class="form-check-label" for="checkbox-Extreme">
+                                Extreme
+                            </label>
+                        </div>
+                    </div>
+                    <div class="groupbox">
+                        <p class="groupbox-title">Length (m)</p>
+                    </div>
+                </div>
+<!--                Contents box -->
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <img class="card-img-top" alt="botanicalgarden.png" src="https://static.wikia.nocookie.net/revolt/images/6/69/Garden_infobox_thumbnail.png/revision/latest/scale-to-width-down/350?cb=20170618232853"/>
+                                <div class="card-body">
+                                    <p class="card-title">Botanical Garden</p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Difficulty</p>
+                                            <p>Length</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="values">
+                                                <p>Easy</p>
+                                                <p>323m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                        <div class="col-sm-4">
+			<div class="card">
+                                <img class="card-img-top" alt="wildwest1.png" src="https://static.wikia.nocookie.net/revolt/images/b/b8/Wild_west_1_infobox_thumbnail2.png/revision/latest/scale-to-width-down/350?cb=20170618232859"/>
+                                <div class="card-body">
+                                    <p class="card-title">Ghost Town 1</p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Difficulty</p>
+                                            <p>Length</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="values">
+                                                <p>Medium</p>
+                                                <p>324m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                        <div class="col-sm-4">
+			<div class="card">
+                                <img class="card-img-top" alt="supermarket1.png" src="https://static.wikia.nocookie.net/revolt/images/b/bf/Market1_infobox_thumbnail.png/revision/latest/scale-to-width-down/350?cb=20170618232854"/>
+                                <div class="card-body">
+                                    <p class="card-title">SuperMarket 1</p>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Difficulty</p>
+                                            <p>Length</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="values">
+                                                <p>Extreme</p>
+                                                <p>502m</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
