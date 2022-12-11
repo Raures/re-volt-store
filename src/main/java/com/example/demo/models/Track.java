@@ -14,14 +14,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cars")
-public class Car {
-
+@Table(name = "tracks")
+public class Track {
+    // TODO: Create TracksController
+    // TODO: Create TracksRepository
+    // TODO: Create DifficultiesRepository to list all difficulties on page
+    // TODO: Create TracksService (for counting track difficulty: easy, medium, hard, extreme
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "name")
     private String name;
 
@@ -31,21 +33,10 @@ public class Car {
     private Thumbnail thumbnail;
 
     @OneToOne
-    @JoinColumn(name = "engine_id")
-    @MapsId("id")
-    private Engine engine;
+    @JoinColumn(name = "difficulty_id", referencedColumnName = "id")
+    @Fetch(FetchMode.JOIN)
+    private Difficulty difficulty;
 
-    @OneToOne
-    @JoinColumn(name = "rating_id")
-    @MapsId("id")
-    private Rating rating;
-
-    @Column(name = "speed")
-    private Integer speed;
-
-    @Column(name = "acc")
-    private Double acc;
-
-    @Column(name = "mass")
-    private Double mass;
+    @Column(name = "length")
+    private Integer length;
 }

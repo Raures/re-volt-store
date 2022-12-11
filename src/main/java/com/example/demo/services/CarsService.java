@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import com.example.demo.models.Car;
-import com.example.demo.models.Engine;
 import com.example.demo.repository.CarRepository;
 import com.example.demo.repository.EngineRepository;
 import com.example.demo.repository.RatingRepository;
@@ -10,15 +9,15 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class StoreService {
+public class CarsService {
 
     private final CarRepository carRepository;
     private final EngineRepository engineRepository;
     private final RatingRepository ratingRepository;
 
-    public StoreService(CarRepository carRepository,
-                        EngineRepository engineRepository,
-                        RatingRepository ratingRepository) {
+    public CarsService(CarRepository carRepository,
+                       EngineRepository engineRepository,
+                       RatingRepository ratingRepository) {
         this.carRepository = carRepository;
         this.engineRepository = engineRepository;
         this.ratingRepository = ratingRepository;

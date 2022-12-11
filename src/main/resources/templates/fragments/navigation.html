@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link th:href="@{/css/navigation.css}" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div th:fragment="navigation">
+            <header>
+                <nav class="navbar">
+                    <div class="navbar-list">
+                        <a class="navbar-list-item" th:href="@{/cars}">Cars</a>
+                        <a class="navbar-list-item" th:href="@{/tracks}">Tracks</a>
+                        <a class="navbar-list-item" th:href="@{/accessories}">Accessories</a>
+                    </div>
+                </nav>
+            </header>
+        </div>
+    </body>
+</html>
