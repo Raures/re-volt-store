@@ -1,0 +1,80 @@
+.container {
+    width: 95%;
+}
+.filter-box {
+    width: 100%;
+    border: 1px solid black;
+}
+.filter-box summary {
+    background-color: #48BCD1;
+    text-align: center;
+}
+
+.filter-box .filter-title {
+    font-weight: bold;
+    margin-left: 0.5em;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.filter-box .form-check {
+    font-size: 14px;
+    margin-top: 0px;
+    margin-left: 1em;
+}
+.info {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1em;
+    text-align: center;
+}
+.main-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main-table .table-row-header th {
+    background-color: #48BCD1;
+}
+.table-row-header th {
+    padding: 5px;
+}
+.table-row-header, .table-row-content {
+    border: 1px solid black;
+    text-align: center;
+}
+.table-item-id, .table-item-thumbnail, .table-item-description, .table-item-cart, .table-item-wishlist {
+    border: 1px solid black;
+}
+.table-item-id {
+    width: 3em;
+}
+.table-item-description {
+    vertical-align: top;
+}
+.table-item-description table {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.name {
+    font-weight: bold;
+    font-size: 19px;
+}
+.rating, .acc {
+    background-color: #ebebeb;
+}
+.table-item-cart, .table-item-wishlist {
+    font-weight: bold;
+    vertical-align: middle;
+}
+.table-item-thumbnail {
+    align: center;
+}
+table .mini-table-header {
+    background-color: #ebebeb;
+    text-align: center;
+}
+.mini-table-data {
+    text-align: center;
+}
