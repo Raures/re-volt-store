@@ -1,9 +1,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+        <link th:href="@{/css/footer.css}" rel="stylesheet"/>
     </head>
     <body>
         <div th:fragment="footer">
-            <h1>Footer.</h1>
+            <footer>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>Re-Volt Store</p>
+                    </div>
+                    <div class="col-sm-5">
+                        <p>2022</p>
+                    </div>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

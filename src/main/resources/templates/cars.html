@@ -4,6 +4,7 @@
         <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
         <link th:href="@{/css/store.css}" rel="stylesheet" />
         <link th:href="@{/css/navigation.css}" rel="stylesheet"/>
+        <link th:href="@{/css/footer.css}" rel="stylesheet"/>
         <title>Re-Volt Store</title>
     </head>
 
@@ -12,7 +13,6 @@
 
         <div class="container">
             <div class="row">
-                <!--                Filters box -->
                 <div class="col-sm-3">
                     <div class="groupbox">
                         <p class="groupbox-title">Engine type</p>
@@ -40,7 +40,6 @@
                         <p class="groupbox-title">Mass (kg)</p>
                     </div>
                 </div>
-                <!--                Contents box -->
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-4" th:each="car: ${cars}">

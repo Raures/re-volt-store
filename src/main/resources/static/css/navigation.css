@@ -23,3 +23,8 @@ header {
     background-color: black;
     padding: 10px;
 }
+.navbar .navbar-list a:active {
+    color: white;
+    background-color: black;
+    padding: 10px;
+}

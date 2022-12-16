@@ -1,0 +1,11 @@
+.navbar-list {
+    margin: auto;
+    margin-bottom: 10px;
+}
+.navbar-list-item + .navbar-list-item {
+    margin-left: 3em;
+}
+.navbar-list-item {
+    font-size: 1.5em;
+    font-weight: bold;
+}
