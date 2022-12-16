@@ -12,41 +12,35 @@ import java.util.*;
 public class CarsService {
 
     private final CarRepository carRepository;
-    private final EngineRepository engineRepository;
-    private final RatingRepository ratingRepository;
 
-    public CarsService(CarRepository carRepository,
-                       EngineRepository engineRepository,
-                       RatingRepository ratingRepository) {
+    public CarsService(CarRepository carRepository) {
         this.carRepository = carRepository;
-        this.engineRepository = engineRepository;
-        this.ratingRepository = ratingRepository;
     }
 
-    public List<Car> getCars() {
+    public List<Car> getAllCars() {
 
         return carRepository.findAll();
     }
 
-    public HashMap<String, Integer> countEngines() {
+    public HashMap<String, Integer> groupCountEnginesPerType() {
 
-        HashMap<String, Integer> countedEngines = new HashMap<>();
+        HashMap<String, Integer> engines = new HashMap<>();
 
         for(Car c : carRepository.findAll()) {
-            countedEngines.merge(c.getEngine().getType(), 1, Integer::sum);
+            engines.merge(c.getEngine().getType(), 1, Integer::sum);
         }
 
-        return countedEngines;
+        return engines;
     }
 
-    public HashMap<String, Integer> countRatings() {
+    public HashMap<String, Integer> groupCountRatingsPerType() {
 
-        HashMap<String, Integer> countedRatings = new HashMap<>();
+        HashMap<String, Integer> ratings = new HashMap<>();
 
         for(Car c : carRepository.findAll()) {
-            countedRatings.merge(c.getRating().getType(), 1, Integer::sum);
+            ratings.merge(c.getRating().getType(), 1, Integer::sum);
         }
 
-        return countedRatings;
+        return ratings;
     }
 }
