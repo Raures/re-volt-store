@@ -28,6 +28,9 @@
     padding: 1em;
     text-align: center;
 }
+.order-container {
+    text-align: center;
+}
 .main-table {
     width: 100%;
     margin-left: auto;
@@ -43,7 +46,7 @@
     border: 1px solid black;
     text-align: center;
 }
-.table-item-id, .table-item-thumbnail, .table-item-description, .table-item-cart, .table-item-wishlist {
+.table-item-id, .table-item-thumbnail, .table-item-description, .table-item-price, .table-item-cart, .table-item-wishlist {
     border: 1px solid black;
 }
 .table-item-id {
@@ -63,6 +66,11 @@
 }
 .rating, .acc {
     background-color: #ebebeb;
+}
+.table-item-price {
+    font-weight: bold;
+    text-decoration-line: underline;
+    text-decoration-style: double;
 }
 .table-item-cart, .table-item-wishlist {
     font-weight: bold;
