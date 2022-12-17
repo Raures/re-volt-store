@@ -48,4 +48,7 @@ public class Car {
 
     @Column(name = "mass")
     private Double mass;
+
+    @Column(name = "price")
+    private Double price;
 }

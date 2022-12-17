@@ -35,4 +35,7 @@ public class Track {
 
     @Column(name = "length")
     private Integer length;
+
+    @Column(name = "price")
+    private Double price;
 }
