@@ -31,11 +31,32 @@
 
     <h5 class="info">Viewing all tracks in the store.</h5>
 
+    <form class="order-container" action="/order-by">
+        <label for="order-by">Order by</label>
+        <select name="order-by" id="order-by">
+            <option>Id</option>
+            <option>Price</option>
+            <option>Name</option>
+            <option>Difficulty</option>
+            <option>Length</option>
+        </select>
+
+        <label>
+            <input style="display: inline;" type="radio" name="order" value="asc"/> ascending
+        </label>
+        <label>
+            <input type="radio" name="order" value="desc"/> descending
+        </label>
+
+        <input type="submit" value="Submit"/>
+    </form>
+
     <table class="main-table">
         <tr class="table-row-header">
             <th>ID</th>
             <th>Thumbnail</th>
             <th>Specifications</th>
+            <th>Price</th>
             <th>Cart</th>
             <th>Wishlist</th>
         </tr>
@@ -56,6 +77,9 @@
                         <td th:text="${track.length}"></td>
                     </tr>
                 </table>
+            </td>
+            <td class="table-item-price">
+                <p th:text="'$' + ${track.price ?:'0.00'}"></p>
             </td>
             <td class="table-item-cart">
                 <a th:href="@{#}">Add to Cart</a>

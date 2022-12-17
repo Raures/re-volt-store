@@ -47,11 +47,35 @@
 
             <h5 class="info">Viewing all cars in the store.</h5>
 
+            <form class="order-container" action="/order-by">
+                <label for="order-by">Order by</label>
+                <select name="order-by" id="order-by">
+                    <option>Id</option>
+                    <option>Price</option>
+                    <option>Name</option>
+                    <option>Engine type</option>
+                    <option>Rating</option>
+                    <option>Speed</option>
+                    <option>Acceleration</option>
+                    <option>Mass</option>
+                </select>
+
+                <label>
+                    <input style="display: inline;" type="radio" name="order" value="asc"/> ascending
+                </label>
+                <label>
+                    <input type="radio" name="order" value="desc"/> descending
+                </label>
+
+                <input type="submit" value="Submit"/>
+            </form>
+
             <table class="main-table">
                 <tr class="table-row-header">
                     <th>ID</th>
                     <th>Thumbnail</th>
                     <th>Specifications</th>
+                    <th>Price</th>
                     <th>Cart</th>
                     <th>Wishlist</th>
                 </tr>
@@ -84,6 +108,9 @@
                                 <td th:text="${car.mass} + ' kg'"></td>
                             </tr>
                         </table>
+                    </td>
+                    <td class="table-item-price">
+                        <p th:text="'$' + ${car.price ?:'1'}"></p>
                     </td>
                     <td class="table-item-cart">
                         <a th:href="@{#}">Add to Cart</a>
