@@ -2,78 +2,126 @@
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
-        <link th:href="@{/css/store.css}" rel="stylesheet" />
+        <link th:href="@{/css/cars.css}" rel="stylesheet"/>
         <link th:href="@{/css/navigation.css}" rel="stylesheet"/>
-        <link th:href="@{/css/footer.css}" rel="stylesheet"/>
         <title>Re-Volt Store</title>
     </head>
-
     <body>
         <div th:replace="fragments/navigation.html :: navigation"></div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="groupbox">
-                        <p class="groupbox-title">Engine type</p>
+
+            <details class="filter-box">
+                <summary>Filters</summary>
+                <div class="row">
+                    <div class="col-2">
+                        <p class="filter-title">Engine type</p>
                         <div class="form-check" th:each="engine : ${engines}">
                             <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${engine.type}">
                             <label class="form-check-label" th:text="|${engine.type} (${enginesCounter.get(engine.type) ?: '0'})|" th:for="'checkbox-' + ${engine.type}">
                             </label>
                         </div>
                     </div>
-                    <div class="groupbox">
-                        <p class="groupbox-title">Rating</p>
+                    <div class="col-2">
+                        <p class="filter-title">Rating</p>
                         <div class="form-check" th:each="rating : ${ratings}">
                             <input class="form-check-input" type="checkbox" th:id="'checkbox-' + ${rating.type}">
                             <label class="form-check-label" th:text="|${rating.type} (${ratingsCounter.get(rating.type) ?: '0'})|" th:for="'checkbox-' + ${rating.type}">
                             </label>
                         </div>
                     </div>
-                    <div class="groupbox">
-                        <p class="groupbox-title">Speed (mph)</p>
+                    <div class="col-sm">
+                        <p class="filter-title">Speed (mph)</p>
+                        <input type="range" min="0" max="100" value="100">
                     </div>
-                    <div class="groupbox">
-                        <p class="groupbox-title">Acceleration (m/s&#178)</p>
+                    <div class="col-sm">
+                        <p class="filter-title">Acceleration (m/s&#178)</p>
+                        <input type="range" min="0" max="100" value="100">
                     </div>
-                    <div class="groupbox">
-                        <p class="groupbox-title">Mass (kg)</p>
-                    </div>
-                </div>
-                <div class="col-sm-9">
-                    <div class="row">
-                        <div class="col-sm-4" th:each="car: ${cars}">
-                            <div class="card">
-                                <img class="card-img-top" th:src="@{'/images/cars/' + ${car.thumbnail.image}}" th:alt="${car.thumbnail.image}"/>
-                                <div class="card-body">
-                                    <p th:text="${car.name}" class="card-title"></p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p>Engine type</p>
-                                            <p>Rating</p>
-                                            <p>Speed</p>
-                                            <p>Acceleration</p>
-                                            <p>Mass</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="values">
-                                                <!--                                        TODO: Add emoji: Electric (thunderbolt), Glow (petrol/oil drop), Special (UFO?) -->
-                                                <p th:text="${car.engine.type}"></p>
-                                                <p th:text="${car.rating.type}">Amateur</p>
-                                                <p th:text="${car.speed}">43</p>
-                                                <p th:text="${car.acc}">2.71</p>
-                                                <p th:text="${car.mass}">2.5</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-sm">
+                        <p class="filter-title">Mass (kg)</p>
+                        <input type="range" min="0" max="100" value="100">
                     </div>
                 </div>
-            </div>
-        </div>
+            </details>
 
-        <div th:replace="fragments/footer.html :: footer"></div>
+            <h5 class="info">Viewing all cars in the store.</h5>
+
+            <form class="order-container" action="order-by" method="post">
+                <label for="order-by">Order by</label>
+                <select name="criteria" id="order-by">
+                    <option value="id">Id</option>
+                    <option value="price">Price</option>
+                    <option value="name">Name</option>
+                    <option value="engine_type">Engine type</option>
+                    <option value="rating">Rating</option>
+                    <option value="speed">Speed</option>
+                    <option value="acceleration">Acceleration</option>
+                    <option value="mass">Mass</option>
+                </select>
+
+                <label>
+                    <input style="display: inline;" type="radio" name="order" value="asc" checked/> ascending
+                </label>
+                <label>
+                    <input type="radio" name="order" value="desc"/> descending
+                </label>
+
+                <input type="submit" value="Submit"/>
+            </form>
+
+            <table class="main-table">
+                <tr class="table-row-header">
+                    <th>ID</th>
+                    <th>Thumbnail</th>
+                    <th>Specifications</th>
+                    <th>Price</th>
+                    <th>Cart</th>
+                    <th>Wishlist</th>
+                </tr>
+                <tr class="table-row-content" th:each="car : ${cars}">
+                    <td class="table-item-id" th:text="${car.id}"></td>
+                    <td class="table-item-thumbnail">
+                        <img th:src="@{'/images/cars/' + ${car.thumbnail.image}}" th:alt="${car.thumbnail.image}">
+                    </td>
+                    <td class="table-item-description">
+                        <p class="name" th:text="${car.name}"></p>
+                        <table>
+                            <tr class="engine">
+                                <td>Engine type</td>
+                                <td th:text="${car.engine.type}"></td>
+                            </tr>
+                            <tr class="rating">
+                                <td>Rating</td>
+                                <td th:text="${car.rating.type}"></td>
+                            </tr>
+                            <tr class="speed">
+                                <td>Speed</td>
+                                <td th:text="${car.speed} + ' mph'"></td>
+                            </tr>
+                            <tr class="acc">
+                                <td>Acceleration</td>
+                                <td th:text="${car.acc} + ' m/s&#178'"></td>
+                            </tr>
+                            <tr class="mass">
+                                <td>Mass</td>
+                                <td th:text="${car.mass} + ' kg'"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="table-item-price">
+                        <p th:text="'$' + ${car.price ?: '1'}"></p>
+                    </td>
+                    <td class="table-item-cart">
+                        <a th:href="@{#}">Add to Cart</a>
+                    </td>
+                    <td class="table-item-wishlist">
+                        <form th:action="@{wishlist/} + ${car.wishlisted ? 'remove/' : 'add/'} + ${car.id}" method="post">
+                            <button type="submit" th:text="${car.wishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}"></button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
