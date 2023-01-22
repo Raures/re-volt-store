@@ -2,11 +2,10 @@ package com.example.demo.services;
 
 import com.example.demo.models.Car;
 import com.example.demo.repository.CarRepository;
-import com.example.demo.repository.EngineRepository;
-import com.example.demo.repository.RatingRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class CarsService {
@@ -43,4 +42,20 @@ public class CarsService {
 
         return ratings;
     }
+
+    public void updateWishlistedStatusById(Long id) {
+
+        Boolean wishlistedStatus = carRepository.getWishlistStatus(id);
+
+        if (wishlistedStatus) {
+            carRepository.updateWishlistedStatusById(id, false);
+        } else {
+            carRepository.updateWishlistedStatusById(id, true);
+        }
+    }
+
+    public List<Car> getAllWishlisted() {
+        return carRepository.getAllWithWishlistStatus(true);
+    }
+
 }
