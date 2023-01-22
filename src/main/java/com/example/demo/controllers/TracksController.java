@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.repository.DifficultyRepository;
-import com.example.demo.repository.TrackRepository;
 import com.example.demo.services.TracksService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +23,6 @@ public class TracksController {
         model.addAttribute("difficulties", difficultyRepository.findAll());
         model.addAttribute("difficultiesCounter", tracksService.groupCountDifficultiesByType());
 
-        return "tracks_simpleview";
+        return "tracks";
     }
 }
