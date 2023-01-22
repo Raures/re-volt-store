@@ -51,4 +51,10 @@ public class Car {
 
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "wishlisted")
+    private Boolean wishlisted;
+
+    @Column(name = "carted")
+    private Boolean carted;
 }
