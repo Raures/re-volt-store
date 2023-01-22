@@ -1,8 +1,6 @@
 package com.example.demo.services;
 
-import com.example.demo.models.Difficulty;
 import com.example.demo.models.Track;
-import com.example.demo.repository.DifficultyRepository;
 import com.example.demo.repository.TrackRepository;
 import org.springframework.stereotype.Service;
 
