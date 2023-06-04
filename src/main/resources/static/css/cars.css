@@ -69,12 +69,11 @@
 }
 .table-item-price {
     font-weight: bold;
-    text-decoration-line: underline;
-    text-decoration-style: double;
 }
 .table-item-cart, .table-item-wishlist {
     font-weight: bold;
     vertical-align: middle;
+    min-width: 175px;
 }
 .table-item-thumbnail {
     align: center;

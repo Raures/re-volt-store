@@ -4,12 +4,9 @@ import com.example.demo.repository.EngineRepository;
 import com.example.demo.repository.RatingRepository;
 import com.example.demo.services.CarsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -20,8 +17,12 @@ public class CarsController {
     private final CarsService carsService;
 
     @GetMapping("/cars")
-    public String getAllCars(Model model) {
-        model.addAttribute("cars", carsService.getAllCars());
+    public String getAllCars(Model model,
+                             @RequestParam(name = "orderBy", required = false, defaultValue = "1") int orderBy,
+                             @RequestParam(name = "direction", required = false, defaultValue = "asc") String direction) {
+        model.addAttribute("cars", carsService.getAllCars(orderBy, direction));
+        model.addAttribute("orderBy", orderBy);
+        model.addAttribute("direction", direction);
         model.addAttribute("engines", engineRepository.findAll());
         model.addAttribute("ratings", ratingRepository.findAll());
         model.addAttribute("enginesCounter", carsService.groupCountEnginesPerType());
@@ -30,10 +31,4 @@ public class CarsController {
         return "cars";
     }
 
-    @PostMapping("/cars/order-by")
-    public String submit(@RequestParam(value = "criteria") String x) {
-        System.out.println("GOT A VALUE - " + x);
-
-        return "cars";
-    }
 }
