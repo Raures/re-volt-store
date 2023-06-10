@@ -1,7 +1,5 @@
 package com.example.demo.controllers;
 
-import com.example.demo.repository.EngineRepository;
-import com.example.demo.repository.RatingRepository;
 import com.example.demo.services.CarsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
 public class CarsController {
-    private final EngineRepository engineRepository;
-    private final RatingRepository ratingRepository;
     private final CarsService carsService;
 
     @GetMapping("/cars")
@@ -23,10 +19,7 @@ public class CarsController {
         model.addAttribute("cars", carsService.getAllCars(orderBy, direction));
         model.addAttribute("orderBy", orderBy);
         model.addAttribute("direction", direction);
-        model.addAttribute("engines", engineRepository.findAll());
-        model.addAttribute("ratings", ratingRepository.findAll());
-        model.addAttribute("enginesCounter", carsService.groupCountEnginesPerType());
-        model.addAttribute("ratingsCounter", carsService.groupCountRatingsPerType());
+        model.addAttribute("filterWindow", carsService.getFilterWindow());
 
         return "cars";
     }

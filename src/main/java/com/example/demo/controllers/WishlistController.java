@@ -22,16 +22,9 @@ public class WishlistController {
         return "wishlist";
     }
 
-    @PostMapping("/wishlist/add/{id}")
+    @PostMapping("/wishlist/update/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public String addToWishlistById(@PathVariable Long id) {
-        carsService.updateWishlistedStatusById(id);
-        return "redirect:/cars";
-    }
-
-    @PostMapping("/wishlist/remove/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String removeFromWishlistById(@PathVariable Long id) {
         carsService.updateWishlistedStatusById(id);
         return "redirect:/cars";
     }
