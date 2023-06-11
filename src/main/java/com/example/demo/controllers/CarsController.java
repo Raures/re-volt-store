@@ -16,12 +16,14 @@ public class CarsController {
     public String getAllCars(Model model,
                              @RequestParam(name = "orderBy", required = false, defaultValue = "1") int orderBy,
                              @RequestParam(name = "direction", required = false, defaultValue = "asc") String direction) {
-        model.addAttribute("cars", carsService.getAllCars(orderBy, direction));
+        model.addAttribute("items", carsService.getAllCars(orderBy, direction));
         model.addAttribute("orderBy", orderBy);
         model.addAttribute("direction", direction);
+        model.addAttribute("info", "Viewing all cars in the store.");
         model.addAttribute("filterWindow", carsService.getFilterWindow());
+        model.addAttribute("orderByOptions", carsService.getOrderByOptions());
 
-        return "cars";
+        return "shop";
     }
 
 }

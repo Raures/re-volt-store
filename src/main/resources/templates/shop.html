@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
+    <script th:src="@{/js/eventHandler.js}"></script>
+    <link th:href="@{/css/cars.css}" rel="stylesheet"/>
+    <link th:href="@{/css/navigation.css}" rel="stylesheet"/>
+    <title>Re-Volt Store</title>
+</head>
+<body>
+<div th:replace="fragments/navigation.html :: navigation"></div>
+
+<div class="container">
+
+    <details class="filter-box">
+        <summary th:text="${filterWindow.getName()}">Filters</summary>
+        <div class="row">
+            <div class="col-2" th:each="filterView : ${filterWindow.getFilterViews()}">
+                <p class="filter-title" th:text="${filterView.getName()}"></p>
+                <div class="form-check" th:each="filter : ${filterView.getItems()}">
+                    <input class="form-check-input" th:type="${filter.getType()}"
+                           th:id="'${filter.getType()}-' + ${filter.getName()}">
+                    <label class="form-check-label" th:for="'${filter.getType()}-' + ${filter.getName()}"
+                           th:text="${filter.toString()}">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <h5 class="info" th:text="${info}"></h5>
+
+    <form class="order-container">
+        <label for="order-by">Order by</label>
+        <select name="orderBy" id="order-by">
+            <option th:each="orderByOption, iterator : ${orderByOptions}"
+                    th:value="${iterator.count}"
+                    th:text="${orderByOption}"
+                    th:selected="${orderBy == iterator.count}"></option>
+        </select>
+
+        <label>
+            <input style="display: inline;" type="radio" name="direction" id="asc" value="asc"
+                   th:checked="${direction == 'asc'}"/>
+            ascending
+        </label>
+        <label>
+            <input type="radio" name="direction" id="desc" value="desc" th:checked="${direction == 'desc'}"/>
+            descending
+        </label>
+
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <table class="main-table">
+        <tr class="table-row-header">
+            <th>ID</th>
+            <th>Thumbnail</th>
+            <th>Specifications</th>
+            <th>Price</th>
+            <th>Cart</th>
+            <th>Wishlist</th>
+        </tr>
+        <tr class="table-row-content" th:each="item : ${items}">
+            <td class="table-item-id" th:text="${item.getId()}"></td>
+            <td class="table-item-thumbnail">
+                <img th:src="@{${item.getThumbnail()}}" th:alt="${item.getThumbnail()}">
+            </td>
+            <td class="table-item-description">
+                <p class="name" th:text="${item.getName()}"></p>
+                <table>
+                    <tr th:each="characteristic : ${item.characteristics}">
+                        <td th:text="${characteristic.getName()}"></td>
+                        <td th:text="${characteristic.toString()}"></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="table-item-price">
+                <p th:text="'$' + ${item.getPrice() ?: '1'}"></p>
+            </td>
+            <td class="table-item-cart">
+                <a th:href="@{#}">Add to Cart</a>
+            </td>
+            <td class="table-item-wishlist">
+                <button th:id="${'button' + item.getId()}"
+                        th:onclick="|handleWishlist('${item.getId()}')|"
+                        th:text="${item.isWishlisted() ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
