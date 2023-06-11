@@ -1,15 +1,16 @@
-package com.example.demo;
+package com.example.demo.filters;
 
 public class Checkbox implements FilterOption {
     private String name;
     private boolean isChecked;
     private final int count;
-    private final String type = "checkbox";
+    private final FilterOptionType type;
 
     public Checkbox(String name, boolean isChecked, int count) {
         this.name = name;
         this.isChecked = isChecked;
         this.count = count;
+        this.type = FilterOptionType.CHECKBOX;
     }
 
     public String getName() {
@@ -29,7 +30,7 @@ public class Checkbox implements FilterOption {
     }
 
     public String getType() {
-        return type;
+        return type.getValue();
     }
 
     public String toString() {
