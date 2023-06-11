@@ -34,19 +34,19 @@
     <form class="order-container">
         <label for="order-by">Order by</label>
         <select name="orderBy" id="order-by">
-            <option th:each="orderByOption, iterator : ${orderByOptions}"
-                    th:value="${iterator.count}"
-                    th:text="${orderByOption}"
-                    th:selected="${orderBy == iterator.count}"></option>
+            <option th:each="option : ${orderBy.getOptions()}"
+                    th:value="${option.getKey()}"
+                    th:text="${option.getValue()}"
+                    th:selected="${orderBy.getSelected() == option.getKey()}"></option>
         </select>
 
         <label>
             <input style="display: inline;" type="radio" name="direction" id="asc" value="asc"
-                   th:checked="${direction == 'asc'}"/>
+                   th:checked="${orderBy.getAscending() == 'asc'}"/>
             ascending
         </label>
         <label>
-            <input type="radio" name="direction" id="desc" value="desc" th:checked="${direction == 'desc'}"/>
+            <input type="radio" name="direction" id="desc" value="desc" th:checked="${orderBy.getAscending() == 'desc'}"/>
             descending
         </label>
 
