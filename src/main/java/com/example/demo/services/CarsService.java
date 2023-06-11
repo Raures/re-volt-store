@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import com.example.demo.OrderBy;
+import com.example.demo.OrderOption;
 import com.example.demo.ShopItem;
 import com.example.demo.ShopItemCharacteristic;
 import com.example.demo.filters.Checkbox;
@@ -87,8 +89,17 @@ public class CarsService {
         return engines;
     }
 
-    public List<String> getOrderByOptions() {
-        return Arrays.asList(orderByOptions);
+    public OrderBy getOrderBy(int orderBy, String direction) {
+        List<OrderOption> orderOptions = new ArrayList<>();
+        orderOptions.add(OrderOption.ID);
+        orderOptions.add(OrderOption.PRICE);
+        orderOptions.add(OrderOption.NAME);
+        orderOptions.add(OrderOption.ENGINE);
+        orderOptions.add(OrderOption.RATING);
+        orderOptions.add(OrderOption.SPEED);
+        orderOptions.add(OrderOption.ACC);
+        orderOptions.add(OrderOption.MASS);
+        return new OrderBy(orderBy, orderOptions, direction);
     }
 
     public Map<String, Integer> groupCountRatingsPerType() {
