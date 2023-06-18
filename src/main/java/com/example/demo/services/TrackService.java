@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class TracksService {
+public class TrackService {
 
     private final TrackRepository trackRepository;
 
-    public TracksService(TrackRepository trackRepository) {
+    public TrackService(TrackRepository trackRepository) {
         this.trackRepository = trackRepository;
     }
 

@@ -19,11 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CarsService {
+public class CarService {
 
     private final CarRepository carRepository;
 
-    public CarsService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 

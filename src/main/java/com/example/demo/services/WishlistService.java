@@ -15,12 +15,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WishlistService {
 
-    private final CarsService carsService;
-    private final TracksService tracksService;
+    private final CarService carService;
+    private final TrackService trackService;
 
     public List<ShopItem> getAllWishlistedItems() {
-        List<Car> cars = carsService.getAllWishlisted();
-        List<Track> tracks = tracksService.getAllWishlisted();
+        List<Car> cars = carService.getAllWishlisted();
+        List<Track> tracks = trackService.getAllWishlisted();
         List<ShopItem> items = new ArrayList<>();
         items.addAll(Transformer.carToShopItem(cars));
         items.addAll(Transformer.trackToShopItem(tracks));
@@ -29,9 +29,9 @@ public class WishlistService {
 
     public void updateItem(long id, int type) {
         if (type == ShopItemType.CAR.getValue()) {
-            carsService.updateWishlistedStatusById(id);
+            carService.updateWishlistedStatusById(id);
         } else if (type == ShopItemType.TRACK.getValue()) {
-            tracksService.updateWishlistedStatusById(id);
+            trackService.updateWishlistedStatusById(id);
         }
     }
 }
