@@ -12,10 +12,10 @@
 <div th:replace="fragments/navigation.html :: navigation"></div>
 
 <div class="container">
-    <span th:if="${cars.empty}">
+    <span th:if="${items.empty}">
         <p class="message">Your Wishlist is empty. &#128532;</p>
     </span>
-    <span th:unless="${cars.empty}">
+    <span th:unless="${items.empty}">
         <table class="main-table">
             <tr class="table-row-header">
                 <th>ID</th>
@@ -25,49 +25,34 @@
                 <th>Cart</th>
                 <th>Wishlist</th>
             </tr>
-            <tr class="table-row-content" th:each="car : ${cars}">
-                    <td class="table-item-id" th:text="${car.id}"></td>
-                    <td class="table-item-thumbnail">
-                        <img th:src="@{'/images/cars/' + ${car.thumbnail.image}}" th:alt="${car.thumbnail.image}">
-                    </td>
-                    <td class="table-item-description">
-                        <p class="name" th:text="${car.name}"></p>
-                        <table>
-                            <tr class="engine">
-                                <td>Engine type</td>
-                                <td th:text="${car.engine.type}"></td>
-                            </tr>
-                            <tr class="rating">
-                                <td>Rating</td>
-                                <td th:text="${car.rating.type}"></td>
-                            </tr>
-                            <tr class="speed">
-                                <td>Speed</td>
-                                <td th:text="${car.speed} + ' mph'"></td>
-                            </tr>
-                            <tr class="acc">
-                                <td>Acceleration</td>
-                                <td th:text="${car.acc} + ' m/s&#178'"></td>
-                            </tr>
-                            <tr class="mass">
-                                <td>Mass</td>
-                                <td th:text="${car.mass} + ' kg'"></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="table-item-price">
-                        <p th:text="'$' + ${car.price ?: '1'}"></p>
-                    </td>
-                    <td class="table-item-cart">
-                        <a th:href="@{#}">Add to Cart</a>
-                    </td>
-                    <td class="table-item-wishlist">
-                        <button th:id="${'button' + car.id}"
-                                th:onclick="|handleWishlist('${car.id}')|"
-                                th:text="${car.wishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}">
-                        </button>
-                    </td>
-                </tr>
+            <tr class="table-row-content" th:each="item : ${items}">
+                <td class="table-item-id" th:text="${item.getId()}"></td>
+                <td class="table-item-thumbnail">
+                    <img th:src="@{${item.getThumbnail()}}" th:alt="${item.getThumbnail()}">
+                </td>
+                <td class="table-item-description">
+                    <p class="name" th:text="${item.getName()}"></p>
+                    <table>
+                        <tr th:each="characteristic : ${item.characteristics}">
+                            <td th:text="${characteristic.getName()}"></td>
+                            <td th:text="${characteristic.toString()}"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="table-item-price">
+                    <p th:text="'$' + ${item.getPrice() ?: '1'}"></p>
+                </td>
+                <td class="table-item-cart">
+                    <a th:href="@{#}">Add to Cart</a>
+                </td>
+                <td class="table-item-wishlist">
+                    <button th:id="${'button' + item.getId()}"
+                            th:onclick="|updateWishlist('${item.getId()}', '${item.getType()}')|"
+                            th:text="${item.isWishlisted() ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                    </button>
+                </td>
+            </tr>
+        </table>
     </span>
 </div>
 </body>
