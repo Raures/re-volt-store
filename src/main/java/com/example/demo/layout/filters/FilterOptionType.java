@@ -1,4 +1,4 @@
-package com.example.demo.filters;
+package com.example.demo.layout.filters;
 
 public enum FilterOptionType {
     CHECKBOX("checkbox");

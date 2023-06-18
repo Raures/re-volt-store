@@ -1,4 +1,4 @@
-package com.example.demo.filters;
+package com.example.demo.layout.filters;
 
 public class Checkbox implements FilterOption {
     private String name;

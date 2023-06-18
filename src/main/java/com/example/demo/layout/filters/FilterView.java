@@ -1,4 +1,4 @@
-package com.example.demo.filters;
+package com.example.demo.layout.filters;
 
 import java.util.List;
 

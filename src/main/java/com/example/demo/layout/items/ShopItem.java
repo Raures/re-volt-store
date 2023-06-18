@@ -1,10 +1,11 @@
-package com.example.demo;
+package com.example.demo.layout.items;
 
 
 import java.util.List;
 
 public class ShopItem {
     private final long id;
+    private final int type;
     private final String thumbnail;
     private final String name;
     private final List<ShopItemCharacteristic> characteristics;
@@ -12,8 +13,9 @@ public class ShopItem {
     private final boolean isWishlisted;
     private final boolean isCarted;
 
-    public ShopItem(long id, String thumbnail, String name, List<ShopItemCharacteristic> characteristics, double price, boolean isWishlisted, boolean isCarted) {
+    public ShopItem(long id, int type, String thumbnail, String name, List<ShopItemCharacteristic> characteristics, double price, boolean isWishlisted, boolean isCarted) {
         this.id = id;
+        this.type = type;
         this.thumbnail = thumbnail;
         this.name = name;
         this.characteristics = characteristics;
@@ -24,6 +26,10 @@ public class ShopItem {
 
     public long getId() {
         return id;
+    }
+
+    public int getType() {
+        return type;
     }
 
     public String getThumbnail() {
