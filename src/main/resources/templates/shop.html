@@ -84,12 +84,15 @@
             </td>
             <td class="table-item-wishlist">
                 <button th:id="${'button' + item.getId()}"
-                        th:onclick="|handleWishlist('${item.getId()}')|"
+                        th:onclick="|updateWishlist('${item.getId()}', '${item.getType()}')|"
                         th:text="${item.isWishlisted() ? 'Remove from Wishlist' : 'Add to Wishlist'}">
                 </button>
             </td>
         </tr>
     </table>
 </div>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+
 </body>
 </html>
