@@ -1,11 +1,12 @@
 package com.revoltstore.services;
 
-import com.revoltstore.Transformer;
+import com.revoltstore.auxiliary.ColumnNameMapper;
+import com.revoltstore.auxiliary.Transformer;
 import com.revoltstore.layout.filters.Checkbox;
 import com.revoltstore.layout.filters.FilterOption;
 import com.revoltstore.layout.filters.FilterView;
 import com.revoltstore.layout.filters.FilterWindow;
-import com.revoltstore.layout.items.ShopItem;
+import com.revoltstore.auxiliary.items.ShopItem;
 import com.revoltstore.layout.order.OrderBy;
 import com.revoltstore.layout.order.OrderOption;
 import com.revoltstore.models.Car;

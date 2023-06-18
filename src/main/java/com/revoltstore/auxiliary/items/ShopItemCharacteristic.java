@@ -1,4 +1,4 @@
-package com.revoltstore.layout.items;
+package com.revoltstore.auxiliary.items;
 
 
 public class ShopItemCharacteristic {

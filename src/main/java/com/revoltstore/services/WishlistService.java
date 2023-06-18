@@ -1,8 +1,8 @@
 package com.revoltstore.services;
 
-import com.revoltstore.Transformer;
-import com.revoltstore.layout.items.ShopItem;
-import com.revoltstore.layout.items.ShopItemType;
+import com.revoltstore.auxiliary.Transformer;
+import com.revoltstore.auxiliary.items.ShopItem;
+import com.revoltstore.auxiliary.items.ShopItemType;
 import com.revoltstore.models.Car;
 import com.revoltstore.models.Track;
 import lombok.RequiredArgsConstructor;

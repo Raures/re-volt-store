@@ -1,4 +1,4 @@
-package com.revoltstore.services;
+package com.revoltstore.auxiliary;
 
 public enum ColumnNameMapper {
 

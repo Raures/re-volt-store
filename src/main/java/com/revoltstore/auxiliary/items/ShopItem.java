@@ -1,4 +1,4 @@
-package com.revoltstore.layout.items;
+package com.revoltstore.auxiliary.items;
 
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.revoltstore;
+package com.revoltstore.auxiliary;
 
-import com.revoltstore.layout.items.ShopItem;
-import com.revoltstore.layout.items.ShopItemCharacteristic;
-import com.revoltstore.layout.items.ShopItemType;
+import com.revoltstore.auxiliary.items.ShopItem;
+import com.revoltstore.auxiliary.items.ShopItemCharacteristic;
+import com.revoltstore.auxiliary.items.ShopItemType;
 import com.revoltstore.models.Car;
 import com.revoltstore.models.Track;
 
