@@ -16,10 +16,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tracks")
 public class Track {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
 
@@ -38,4 +40,7 @@ public class Track {
 
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "wishlisted")
+    private Boolean wishlisted;
 }
