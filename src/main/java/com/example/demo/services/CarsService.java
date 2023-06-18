@@ -1,34 +1,27 @@
 package com.example.demo.services;
 
-import com.example.demo.OrderBy;
-import com.example.demo.OrderOption;
-import com.example.demo.ShopItem;
-import com.example.demo.ShopItemCharacteristic;
-import com.example.demo.filters.Checkbox;
-import com.example.demo.filters.FilterOption;
-import com.example.demo.filters.FilterView;
-import com.example.demo.filters.FilterWindow;
+import com.example.demo.Transformer;
+import com.example.demo.layout.filters.Checkbox;
+import com.example.demo.layout.filters.FilterOption;
+import com.example.demo.layout.filters.FilterView;
+import com.example.demo.layout.filters.FilterWindow;
+import com.example.demo.layout.items.ShopItem;
+import com.example.demo.layout.order.OrderBy;
+import com.example.demo.layout.order.OrderOption;
 import com.example.demo.models.Car;
 import com.example.demo.repository.CarRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class CarsService {
 
     private final CarRepository carRepository;
-    private final String[] orderByOptions = new String[] {
-            "Id",
-            "Price",
-            "Name",
-            "Engine type",
-            "Rating",
-            "Speed",
-            "Acceleration",
-            "Mass"
-    };
 
     public CarsService(CarRepository carRepository) {
         this.carRepository = carRepository;
@@ -36,24 +29,7 @@ public class CarsService {
 
     public List<ShopItem> getAllCars(int orderBy, String direction) {
         List<Car> cars = carRepository.findAll(Sort.by(Sort.Direction.fromString(direction), ColumnNameMapper.getValue(orderBy)));
-        List<ShopItem> items = new ArrayList<>();
-        for (Car car : cars) {
-            long id = car.getId();
-            String thumbnail = "/images/cars/" + car.getThumbnail().getImage();
-            String name = car.getName();
-            List<ShopItemCharacteristic> itemCharacteristics = new ArrayList<>();
-            itemCharacteristics.add(new ShopItemCharacteristic("Engine type", car.getEngine().getType()));
-            itemCharacteristics.add(new ShopItemCharacteristic("Rating", car.getRating().getType()));
-            itemCharacteristics.add(new ShopItemCharacteristic("Speed", String.valueOf(car.getSpeed()), "mph"));
-            itemCharacteristics.add(new ShopItemCharacteristic("Acceleration", String.valueOf(car.getAcc()), "m/s²"));
-            itemCharacteristics.add(new ShopItemCharacteristic("Mass", String.valueOf(car.getMass()), "kg"));
-            double price = car.getPrice();
-            boolean isWishlisted = car.getWishlisted();
-            boolean isCarted = car.getCarted();
-
-            items.add(new ShopItem(id, thumbnail, name, itemCharacteristics, price, isWishlisted, isCarted));
-        }
-        return items;
+        return new ArrayList<>(Transformer.carToShopItem(cars));
     }
 
     public FilterWindow getFilterWindow() {
@@ -83,8 +59,8 @@ public class CarsService {
 
     public Map<String, Integer> groupCountEnginesPerType() {
         HashMap<String, Integer> engines = new HashMap<>();
-        for (Car c : carRepository.findAll()) {
-            engines.merge(c.getEngine().getType(), 1, Integer::sum);
+        for (Car car : carRepository.findAll()) {
+            engines.merge(car.getEngine().getType(), 1, Integer::sum);
         }
         return engines;
     }
