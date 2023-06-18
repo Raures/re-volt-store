@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.services.CarsService;
+import com.example.demo.services.WishlistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,18 +14,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequiredArgsConstructor
 public class WishlistController {
 
-    private final CarsService carsService;
+    private final WishlistService wishlistService;
 
     @GetMapping("/wishlist")
     public String viewAllWishlistItems(Model model) {
-        model.addAttribute("cars", carsService.getAllWishlisted());
+        model.addAttribute("items", wishlistService.getAllWishlistedItems());
         return "wishlist";
     }
 
-    @PostMapping("/wishlist/update/{id}")
+    @PostMapping("/wishlist/update/{type}/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public String addToWishlistById(@PathVariable Long id) {
-        carsService.updateWishlistedStatusById(id);
+    public String addToWishlistById(@PathVariable int type, @PathVariable Long id) {
+        wishlistService.updateItem(id, type);
+//        carsService.updateWishlistedStatusById(id);
         return "redirect:/cars";
     }
 
