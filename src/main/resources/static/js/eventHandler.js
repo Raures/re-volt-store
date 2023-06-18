@@ -1,4 +1,4 @@
-function handleWishlist(id) {
+function updateWishlist(id, type) {
 
     var text = "Add to Wishlist";
     var button = "button" + id;
@@ -8,6 +8,6 @@ function handleWishlist(id) {
     }
 
     document.getElementById(button).innerHTML = text;
-    fetch("http://localhost:8080/wishlist/update/" + id, {method: 'POST'});
+    fetch("http://localhost:8080/wishlist/update/" + type + "/" + id, {method: 'POST'});
 
 }
